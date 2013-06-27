@@ -1,1 +1,1 @@
-web: python mybbt/manage.py collectstatic --noinput; bin/gunicorn_django --workers=1 --bind=0.0.0.0:$PORT mybbt/mybbt/settings.py 
+web: python manage.py run_gunicorn -b "0.0.0.0:$PORT" -c gunicorn_conf.py
