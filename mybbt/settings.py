@@ -120,6 +120,7 @@ INSTALLED_APPS = (
     'django.contrib.sites',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'storages'
     # Uncomment the next line to enable the admin:
     'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:
@@ -161,3 +162,18 @@ DATABASES['default'] =  dj_database_url.config(default='postgres://test:test@loc
 
 # Honor the 'X-Forwarded-Proto' header for request.is_secure()
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+
+if DEBUG:
+    # Development storage using local files.
+    STATIC_URL = '/static/'
+    ADMIN_MEDIA_PREFIX = '/static/admin/'
+    MEDIA_URL = '/media/'
+    MEDIA_ROOT = '/path/to/development/media'
+
+if not DEBUG:
+    # Production storage using s3.
+    DEFAULT_FILE_STORAGE = 's3storages.MediaStorage'
+    STATICFILES_STORAGE = 's3storages.StaticStorage'
+    STATIC_URL = 'https://s3.amazonaws.com/mybbt-assets1/static/'
+    ADMIN_MEDIA_PREFIX = 'https://s3.amazonaws.com/mybbt-assets1/static/admin/'
+    MEDIA_URL = 'https://s3.amazonaws.com/mybbt-assets1/media/'
