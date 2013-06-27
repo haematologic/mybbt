@@ -169,17 +169,9 @@ SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
 AWS_STORAGE_BUCKET_NAME = os.environ['AWS_STORAGE_BUCKET_NAME']
 
-if DEBUG:
-    # Development storage using local files.
-    STATIC_URL = '/static/'
-    ADMIN_MEDIA_PREFIX = '/static/admin/'
-    MEDIA_URL = '/media/'
-    MEDIA_ROOT = '/path/to/development/media/'
-
 if not DEBUG:
     # Production storage using s3.
-    DEFAULT_FILE_STORAGE = 's3storages.MediaStorage'
-    STATICFILES_STORAGE = 's3storages.StaticStorage'
-    STATIC_URL = 'https://s3.amazonaws.com/%s/static/' % AWS_STORAGE_BUCKET_NAME
-    ADMIN_MEDIA_PREFIX = 'https://s3.amazonaws.com/%s/static/admin/' % AWS_STORAGE_BUCKET_NAME
-    MEDIA_URL = 'https://s3.amazonaws.com/%s/media/' % AWS_STORAGE_BUCKET_NAME
+    AWS_STORAGE_BUCKET_NAME = os.environ['AWS_STORAGE_BUCKET_NAME']
+    STATICFILES_STORAGE = 'storages.backends.s3boto.s3BotoStorage'
+    S3_URL = 'https://s3.amazonaws.com/%s/' % AWS_STORAGE_BUCKET_NAME
+    STATIC_URL = S3_URL + '/static/'
