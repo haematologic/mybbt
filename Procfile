@@ -1,1 +1,1 @@
-web: gunicorn wsgi.pymybbt.wsgi
+web: gunicorn mybbt.wsgi
