@@ -1,6 +1,6 @@
 # Django settings for mybbt project.
 
-DEBUG = False
+DEBUG = TRUE
 # TEMPLATE_DEBUG = DEBUG
 
 ADMINS = (
@@ -167,9 +167,10 @@ DATABASES['default'] =  dj_database_url.config(default='postgres://test:test@loc
 # Honor the 'X-Forwarded-Proto' header for request.is_secure()
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
-if not DEBUG:
+#if not DEBUG:
     # Production storage using s3.
     AWS_STORAGE_BUCKET_NAME = os.environ['AWS_STORAGE_BUCKET_NAME']
     STATICFILES_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
     S3_URL = 'https://s3.amazonaws.com/%s/' % AWS_STORAGE_BUCKET_NAME
     STATIC_URL = S3_URL + 'static/'
+    
