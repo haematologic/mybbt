@@ -1,6 +1,6 @@
 # Django settings for mybbt project.
 
-DEBUG = TRUE
+DEBUG = True
 # TEMPLATE_DEBUG = DEBUG
 
 ADMINS = (
