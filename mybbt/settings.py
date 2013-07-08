@@ -173,3 +173,4 @@ if not DEBUG:
     STATICFILES_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
     S3_URL = 'https://s3.amazonaws.com/%s/' % AWS_STORAGE_BUCKET_NAME
     STATIC_URL = S3_URL + '/static/'
+    MEDIA_URL = S3_URL + '/media/'
