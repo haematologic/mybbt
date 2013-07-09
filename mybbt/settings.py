@@ -1,6 +1,6 @@
 # Django settings for mybbt project.
 
-DEBUG = True
+DEBUG = False
 # TEMPLATE_DEBUG = DEBUG
 
 ALLOWED_HOSTS = ['localhost'] # Required for Django 1.5 production env
