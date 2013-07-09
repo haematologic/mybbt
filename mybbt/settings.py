@@ -3,6 +3,8 @@
 DEBUG = True
 # TEMPLATE_DEBUG = DEBUG
 
+ALLOWED_HOSTS = ['localhost'] # Required for Django 1.5 production env
+
 ADMINS = (
     # ('Your Name', 'your_email@example.com'),
 )
