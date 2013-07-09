@@ -1,4 +1,5 @@
 # Django settings for mybbt project.
+#gobledegook
 
 DEBUG = False
 # TEMPLATE_DEBUG = DEBUG
